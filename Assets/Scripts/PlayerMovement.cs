@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-			Sprint(5.0f);
+			Sprint(2.0f);
         }
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
