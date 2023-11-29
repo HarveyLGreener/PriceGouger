@@ -7,7 +7,7 @@ public class ObjectiveText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI objectiveProgress;
     // Start is called before the first frame update
-    private int objectives;
+    public int objectives;
     public int progress;
     void Start()
     {

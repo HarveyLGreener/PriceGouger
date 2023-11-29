@@ -7,14 +7,12 @@ public class ShootPrice : MonoBehaviour
 	public float MouseSensitivity;
 	public Transform CamTransform;
 	public float timerLength = 0.0f;
-	public float timer;
 	private float camRotation = 0f;
 
 	private void Start()
 	{
 		//Locks cursor for mouse movement
 		Cursor.lockState = CursorLockMode.Locked;
-		timer = timerLength;
 	}
 
 	private void Update()
@@ -33,13 +31,6 @@ public class ShootPrice : MonoBehaviour
 		{
 			Debug.Log("Left Click");
 			SimpleRaycast();
-		}
-
-		//timer
-		timer -= Time.deltaTime;
-		if (timer <= 0)
-		{
-			//do a thing
 		}
 	}
 
