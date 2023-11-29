@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 639061099}
   - component: {fileID: 639061098}
   - component: {fileID: 639061097}
+  - component: {fileID: 639061103}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -548,14 +549,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CC: {fileID: 639061098}
-  MouseSensitivity: 20
-  CamTransform: {fileID: 963194228}
   MoveSpeed: 5
   SpeedMultiplier: 1
   Gravity: -9.8
   JumpSpeed: 0
-  CamRotation: 0
-  VerticalSpeed: 0
 --- !u!143 &639061098
 CharacterController:
   m_ObjectHideFlags: 0
@@ -654,6 +651,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639061103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639061096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d151af90f53bb438f7a6f675ba365f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseSensitivity: 0
+  CamTransform: {fileID: 963194228}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

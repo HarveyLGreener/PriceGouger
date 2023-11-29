@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 	public float SpeedMultiplier = 1.0f;
 	public float Gravity = -9.8f;
 	public float JumpSpeed;
+
 	private void Update()
 	{
 		Vector3 movement = Vector3.zero;
@@ -21,5 +22,18 @@ public class PlayerMovement : MonoBehaviour
 
 		CC.Move(movement);
 
+		if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+			Sprint(5.0f);
+        }
+		else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+			SpeedMultiplier = 1.0f;
+        }
 	}
+
+	public void Sprint(float multiplier)
+    {
+		SpeedMultiplier = multiplier;
+    }
 }
