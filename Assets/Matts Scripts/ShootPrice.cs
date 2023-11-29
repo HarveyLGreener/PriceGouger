@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShootPrice : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ShootPrice : MonoBehaviour
 	public Transform CamTransform;
 	public float timerLength = 0.0f;
 	private float camRotation = 0f;
+	[SerializeField] TMP_Text aim;
+	private Color og;
 
 	private void Start()
 	{
@@ -25,13 +28,16 @@ public class ShootPrice : MonoBehaviour
 
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
 		transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseInputX));
-
 		//shoot gun
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log("Left Click");
 			SimpleRaycast();
 		}
+		else
+        {
+			Target();
+		}		
 	}
 
 	private void SimpleRaycast()
@@ -44,6 +50,22 @@ public class ShootPrice : MonoBehaviour
 			if (hit.collider.gameObject.tag == "Objective")
 			{
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+			}
+		}
+
+	}
+	private void Target()
+    {
+		RaycastHit over;
+		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out over))
+        {
+			if (over.collider.gameObject.tag == "Objective")
+			{
+				aim.color = new Color(0f, 255f, 0f, 255f);
+			}
+			else
+            {
+				aim.color = new Color(0f, 0f, 0f, 255f);
 			}
 		}
 
