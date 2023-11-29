@@ -17,11 +17,15 @@ public class TImer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0f)
+        if ((timer > 0f) & (goal.progress < goal.objectives))
         {
             timer -= Time.deltaTime;
             int timeLeft = (int)Mathf.Round(timer);
             countdown.text = timeLeft.ToString();
+        }
+        else if ((goal.progress >= goal.objectives))
+        {
+            outcome.text = "You Win!";
         }
         else
         {

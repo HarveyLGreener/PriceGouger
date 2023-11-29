@@ -31,7 +31,6 @@ public class ShootPrice : MonoBehaviour
 		//shoot gun
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("Left Click");
 			SimpleRaycast();
 		}
 		else
