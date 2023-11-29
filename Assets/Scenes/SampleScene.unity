@@ -663,8 +663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d151af90f53bb438f7a6f675ba365f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseSensitivity: 0
+  MouseSensitivity: 30
   CamTransform: {fileID: 963194228}
+  timerLength: 0
+  timer: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
