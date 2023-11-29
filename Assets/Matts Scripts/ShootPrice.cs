@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShootPrice : MonoBehaviour
 {
@@ -32,8 +33,13 @@ public class ShootPrice : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log("Left Click");
-			SimpleRaycast();
+			PriceShooter();
 		}
+		else if(Input.GetMouseButton(1))
+        {
+			Debug.Log("Right Click");
+			SuperSoaker();
+        }
 
 		//timer
 		timer -= Time.deltaTime;
@@ -43,7 +49,7 @@ public class ShootPrice : MonoBehaviour
 		}
 	}
 
-	private void SimpleRaycast()
+	private void PriceShooter()
 	{
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
@@ -55,6 +61,20 @@ public class ShootPrice : MonoBehaviour
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 			}
 		}
+	}
 
+	private void SuperSoaker()
+    {
+		RaycastHit hit;
+		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
+		{
+			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
+			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
+			if (hit.collider.gameObject.tag == "SuperSoakerText")
+			{
+				TextMeshPro superSoakerText = hit.collider.gameObject.GetComponent<TextMeshPro>();
+				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a-0.002f);
+			}
+		}
 	}
 }
