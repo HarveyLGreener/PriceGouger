@@ -4243,7 +4243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 30
-  goal: {fileID: 0}
+  goal: {fileID: 763086310}
   countdown: {fileID: 2077403954}
   outcome: {fileID: 11965678}
 --- !u!1 &2081015132
