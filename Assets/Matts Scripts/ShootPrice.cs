@@ -7,7 +7,6 @@ public class ShootPrice : MonoBehaviour
 {
 	public float MouseSensitivity;
 	public Transform CamTransform;
-	public float timerLength = 0.0f;
 	private float camRotation = 0f;
 	[SerializeField] TMP_Text aim;
 	private Color og;
