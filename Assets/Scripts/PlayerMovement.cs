@@ -8,7 +8,9 @@ public class PlayerMovement : MonoBehaviour
 	public float MoveSpeed = 10.0f;
 	public float SpeedMultiplier = 1.0f;
 	public float Gravity = -9.8f;
-	public float JumpSpeed;
+	public float JumpSpeed = 10f;
+	public bool hasLanded = true;
+	public float verticalSpeed;
 
 	private void Update()
 	{
@@ -19,12 +21,26 @@ public class PlayerMovement : MonoBehaviour
 		float sideMovement = Input.GetAxis("Horizontal") * MoveSpeed * SpeedMultiplier * Time.deltaTime;
 
 		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
+		if (CC.isGrounded)
+		{
+			verticalSpeed = 0f;
+			hasLanded = true;
+		}
+		if ((Input.GetKeyDown(KeyCode.Space)) & (-0.6 < verticalSpeed) & (verticalSpeed <= 0f) & (hasLanded == true))
+		{
+			hasLanded = false;
+			verticalSpeed = JumpSpeed;
+		}
+
+		verticalSpeed += (Gravity * Time.deltaTime);
+		movement += (transform.up * verticalSpeed * Time.deltaTime);
+
 
 		CC.Move(movement);
 
 		if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-			Sprint(5.0f);
+			Sprint(2.0f);
         }
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
         {

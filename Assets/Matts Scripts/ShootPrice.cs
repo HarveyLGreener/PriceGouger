@@ -7,15 +7,14 @@ public class ShootPrice : MonoBehaviour
 {
 	public float MouseSensitivity;
 	public Transform CamTransform;
-	public float timerLength = 0.0f;
-	public float timer;
 	private float camRotation = 0f;
+	[SerializeField] TMP_Text aim;
+	private Color og;
 
 	private void Start()
 	{
 		//Locks cursor for mouse movement
 		Cursor.lockState = CursorLockMode.Locked;
-		timer = timerLength;
 	}
 
 	private void Update()
@@ -28,28 +27,18 @@ public class ShootPrice : MonoBehaviour
 
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
 		transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseInputX));
-
 		//shoot gun
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("Left Click");
-			PriceShooter();
+			SimpleRaycast();
 		}
-		else if(Input.GetMouseButton(1))
+		else
         {
-			Debug.Log("Right Click");
-			SuperSoaker();
-        }
-
-		//timer
-		timer -= Time.deltaTime;
-		if (timer <= 0)
-		{
-			//do a thing
-		}
+			Target();
+		}		
 	}
 
-	private void PriceShooter()
+	private void SimpleRaycast()
 	{
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
@@ -61,20 +50,22 @@ public class ShootPrice : MonoBehaviour
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 			}
 		}
-	}
 
-	private void SuperSoaker()
+	}
+	private void Target()
     {
-		RaycastHit hit;
-		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
-		{
-			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
-			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
-			if (hit.collider.gameObject.tag == "SuperSoakerText")
+		RaycastHit over;
+		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out over))
+        {
+			if (over.collider.gameObject.tag == "Objective")
 			{
-				TextMeshPro superSoakerText = hit.collider.gameObject.GetComponent<TextMeshPro>();
-				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a-0.002f);
+				aim.color = new Color(0f, 255f, 0f, 255f);
+			}
+			else
+            {
+				aim.color = new Color(0f, 0f, 0f, 255f);
 			}
 		}
+
 	}
 }
