@@ -35,7 +35,7 @@ public class ShootPrice : MonoBehaviour
 		else
         {
 			Target();
-		}		
+		}
 	}
 
 	private void SimpleRaycast()
@@ -53,18 +53,18 @@ public class ShootPrice : MonoBehaviour
 
 	}
 	private void Target()
-    {
+	{
 		RaycastHit over;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out over))
-        {
+		{
 			if (over.collider.gameObject.tag == "Objective")
 			{
 				aim.color = new Color(0f, 255f, 0f, 255f);
 			}
 			else if (over.collider.gameObject.tag == "SuperSoakerText")
-            {
+			{
 				aim.color = new Color(0f, 0f, 255f, 255f);
-            }
+			}
 			else
 			{
 				aim.color = new Color(0f, 0f, 0f, 255f);
