@@ -61,8 +61,12 @@ public class ShootPrice : MonoBehaviour
 			{
 				aim.color = new Color(0f, 255f, 0f, 255f);
 			}
-			else
+			else if (over.collider.gameObject.tag == "SuperSoakerText")
             {
+				aim.color = new Color(0f, 0f, 255f, 255f);
+            }
+			else
+			{
 				aim.color = new Color(0f, 0f, 0f, 255f);
 			}
 		}
