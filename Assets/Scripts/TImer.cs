@@ -7,11 +7,18 @@ public class TImer : MonoBehaviour
 {
     public float timer;
     public ObjectiveText goal;
+    public FMOD.Studio.EventInstance parameter;
+    [FMODUnity.EventRef]
+    public string fmodEvent;
+    public float fulltime;
     [SerializeField] TextMeshProUGUI countdown;
     [SerializeField] TextMeshProUGUI outcome;
     // Start is called before the first frame update
     void Start()
     {
+        parameter = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        parameter.start();
+        fulltime = timer;
     }
 
     // Update is called once per frame
@@ -31,5 +38,6 @@ public class TImer : MonoBehaviour
         {
             outcome.text = "You Lost!";
         }
+        parameter.setParameterByName("LevelPercentage", (-1*(timer-fulltime)/fulltime));
     }
 }
