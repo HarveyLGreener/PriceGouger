@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	public float verticalSpeed;
 	public FMODUnity.StudioEventEmitter emitter;
 	public FMODUnity.StudioEventEmitter sprint;
+	[SerializeField] GameObject sprintlines;
 
 	private void Start()
 	{
@@ -51,7 +52,8 @@ public class PlayerMovement : MonoBehaviour
         {
 			SpeedMultiplier = 1.0f;
 			sprint.Stop();
-        }
+			sprintlines.SetActive(false);
+		}
 
 		if ((hasLanded == true) && ((sideMovement!=0)||(forwardMovement!=0)))
         {
@@ -75,5 +77,6 @@ public class PlayerMovement : MonoBehaviour
         {
 			sprint.Play();
         }
+		sprintlines.SetActive(true);
     }
 }
