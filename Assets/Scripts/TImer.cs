@@ -23,7 +23,7 @@ public class TImer : MonoBehaviour
             int timeLeft = (int)Mathf.Round(timer);
             countdown.text = timeLeft.ToString();
         }
-        else if ((goal.progress >= goal.objectives)&(timer>0f))
+        else if ((goal.progress >= goal.objectives)&(goal.superSoakerProgress >= goal.superSoakerObjectives)&(timer>0f))
         {
             outcome.text = "You Win!";
         }
