@@ -11,6 +11,7 @@ public class TImer : MonoBehaviour
     [FMODUnity.EventRef]
     public string fmodEvent;
     public float fulltime;
+    public FMODUnity.StudioEventEmitter emitter;
     [SerializeField] TextMeshProUGUI countdown;
     [SerializeField] TextMeshProUGUI outcome;
     // Start is called before the first frame update
@@ -39,5 +40,17 @@ public class TImer : MonoBehaviour
             outcome.text = "You Lost!";
         }
         parameter.setParameterByName("LevelPercentage", (-1*(timer-fulltime)/fulltime));
+        if (((int)Mathf.Round(timer)%20==0) && (!emitter.IsPlaying()))
+        {
+            emitter.Play();
+        }
+        if(emitter.IsPlaying())
+        {
+            parameter.setParameterByName("ManagerTalking", 0);
+        }
+        else
+        {
+            parameter.setParameterByName("ManagerTalking", 1);
+        }
     }
 }

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool hasLanded = true;
 	public float verticalSpeed;
 	public FMODUnity.StudioEventEmitter emitter;
+	public FMODUnity.StudioEventEmitter sprint;
 
 	private void Start()
 	{
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 		else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
 			SpeedMultiplier = 1.0f;
+			sprint.Stop();
         }
 
 		if ((hasLanded == true) && ((sideMovement!=0)||(forwardMovement!=0)))
@@ -56,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
 
 			if (!emitter.IsPlaying())
 			{
-				Debug.Log("Is not playing");
 				emitter.Play();
 			}
 		}
@@ -64,12 +65,15 @@ public class PlayerMovement : MonoBehaviour
 		{
 			emitter.Stop();
 		}
-		Debug.Log("Side Movement: " + sideMovement);
-		Debug.Log("Forward Movement: " + forwardMovement);
 	}
 
 	public void Sprint(float multiplier)
     {
+
 		SpeedMultiplier = multiplier;
+		if (!sprint.IsPlaying())
+        {
+			sprint.Play();
+        }
     }
 }
