@@ -11,8 +11,12 @@ public class PlayerMovement : MonoBehaviour
 	public float JumpSpeed = 10f;
 	public bool hasLanded = true;
 	public float verticalSpeed;
+	public FMODUnity.StudioEventEmitter emitter;
 
-	private void Update()
+	private void Start()
+	{
+	}
+    private void Update()
 	{
 		Vector3 movement = Vector3.zero;
 
@@ -46,6 +50,22 @@ public class PlayerMovement : MonoBehaviour
         {
 			SpeedMultiplier = 1.0f;
         }
+
+		if ((hasLanded == true) && ((sideMovement!=0)||(forwardMovement!=0)))
+        {
+
+			if (!emitter.IsPlaying())
+			{
+				Debug.Log("Is not playing");
+				emitter.Play();
+			}
+		}
+		else
+		{
+			emitter.Stop();
+		}
+		Debug.Log("Side Movement: " + sideMovement);
+		Debug.Log("Forward Movement: " + forwardMovement);
 	}
 
 	public void Sprint(float multiplier)
