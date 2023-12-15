@@ -6,6 +6,7 @@ using TMPro;
 public class SuperSoaker : MonoBehaviour
 {
 	public Transform CamTransform;
+	public TutorialMode tutorial;
 	[SerializeField] ObjectiveText superSoakerObjectiveText;
 
 	void Update()
@@ -25,13 +26,21 @@ public class SuperSoaker : MonoBehaviour
 		{
 			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
-			if (hit.collider.gameObject.tag == "SuperSoakerText")
+			if (hit.collider.gameObject.tag == "SuperSoakerText" || hit.collider.gameObject.tag == "TutorialSuperSoaker")
 			{
 				TextMeshPro superSoakerText = hit.collider.gameObject.GetComponent<TextMeshPro>();
 				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a - 0.002f);
 				if(superSoakerText.color.a <= 0.0f)
                 {
-					superSoakerObjectiveText.superSoakerProgress += 1;
+					if(!tutorial.tutorialActive)
+                    {
+						superSoakerObjectiveText.superSoakerProgress++;
+					}
+					else
+                    {
+						superSoakerObjectiveText.tutorialSuperSoakerProgress++;
+                    }
+					
 					hit.collider.gameObject.tag = "Untagged";
 				}					
 			}
