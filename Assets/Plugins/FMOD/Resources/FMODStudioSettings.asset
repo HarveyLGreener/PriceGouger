@@ -283,8 +283,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../OneDrive/Documents/FMOD Studio/GDD207Final/GDD207Final.fspro
-  sourceBankPath: ../../OneDrive/Documents/FMOD Studio/GDD207Final/Build
+  sourceProjectPath: ../GDD207Final - Copy/GDD207Final - Copy/GDD207Final.fspro
+  sourceBankPath: ../GDD207Final - Copy/GDD207Final - Copy/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
