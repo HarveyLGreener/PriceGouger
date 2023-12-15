@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
 	public float JumpSpeed = 10f;
 	public bool hasLanded = true;
 	public float verticalSpeed;
+	public FMODUnity.StudioEventEmitter emitter;
+	public FMODUnity.StudioEventEmitter sprint;
+	[SerializeField] GameObject sprintlines;
 
 	private void Update()
 	{
@@ -38,18 +41,39 @@ public class PlayerMovement : MonoBehaviour
 
 		CC.Move(movement);
 
-		if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
 			Sprint(2.0f);
-        }
-		else if(Input.GetKeyUp(KeyCode.LeftShift))
-        {
+		}
+		else if (Input.GetKeyUp(KeyCode.LeftShift))
+		{
 			SpeedMultiplier = 1.0f;
-        }
+			sprint.Stop();
+			sprintlines.SetActive(false);
+		}
+
+		if ((hasLanded == true) && ((sideMovement != 0) || (forwardMovement != 0)))
+		{
+
+			if (!emitter.IsPlaying())
+			{
+				emitter.Play();
+			}
+		}
+		else
+		{
+			emitter.Stop();
+		}
 	}
 
 	public void Sprint(float multiplier)
-    {
+	{
+
 		SpeedMultiplier = multiplier;
-    }
+		if (!sprint.IsPlaying())
+		{
+			sprint.Play();
+		}
+		sprintlines.SetActive(true);
+	}
 }

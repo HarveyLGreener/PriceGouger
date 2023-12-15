@@ -8,9 +8,24 @@ public class SuperSoaker : MonoBehaviour
 	public Transform CamTransform;
 	public TutorialMode tutorial;
 	[SerializeField] ObjectiveText superSoakerObjectiveText;
+	public FMOD.Studio.EventInstance spray;
+	public string fmodEvent;
 
-	void Update()
+    private void Start()
     {
+		spray = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+	}
+
+    void Update()
+    {
+		if (Input.GetMouseButtonDown(1))
+        {
+			spray.start();
+        }
+		if (Input.GetMouseButtonUp(1))
+        {
+			spray.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }		
 		if (Input.GetMouseButton(1))
 		{
 			Debug.Log("Right Click");
@@ -29,7 +44,7 @@ public class SuperSoaker : MonoBehaviour
 			if (hit.collider.gameObject.tag == "SuperSoakerText" || hit.collider.gameObject.tag == "TutorialSuperSoaker")
 			{
 				TextMeshPro superSoakerText = hit.collider.gameObject.GetComponent<TextMeshPro>();
-				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a - 0.002f);
+				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a - 0.02f);
 				if(superSoakerText.color.a <= 0.0f)
                 {
 					if(!tutorial.tutorialActive)
