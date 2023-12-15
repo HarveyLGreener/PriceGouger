@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Objective
   - SuperSoakerText
+  - TutorialSuperSoaker
+  - TutorialPriceObjectives
+  - TutorialArea
   layers:
   - Default
   - TransparentFX

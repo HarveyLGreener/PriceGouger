@@ -8,6 +8,11 @@ public class ObjectiveProgress : MonoBehaviour
     private void Awake()
     {
         objectiveText.progress += 1;
+
+        if(objectiveText.tutorialPriceProgress < objectiveText.tutorialPriceObjectives)
+        {
+            objectiveText.tutorialPriceProgress++;
+        }
     }
 
 }
