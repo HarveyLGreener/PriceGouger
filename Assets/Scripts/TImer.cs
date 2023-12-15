@@ -36,7 +36,7 @@ public class TImer : MonoBehaviour
                 tutorialmusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 parameter.start();
             }
-            if ((timer >= 0f) & (goal.progress < goal.objectives))
+            if ((timer >= 0f) & ((goal.progress < goal.objectives) || (goal.superSoakerProgress < goal.superSoakerObjectives)))
             {
                 timer -= Time.deltaTime;
                 int timeLeft = (int)Mathf.Round(timer);
