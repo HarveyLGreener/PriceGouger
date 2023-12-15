@@ -6,6 +6,7 @@ public class TutorialMode : MonoBehaviour
 {
     public bool tutorialActive;
     public ObjectiveText objectiveText;
+    public GameObject block;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class TutorialMode : MonoBehaviour
         {
             tutorialActive = false;
             objectiveText.progress = 0;
-
+            Destroy(block);
             foreach (GameObject priceObjective in GameObject.FindGameObjectsWithTag("TutorialPriceObjectives"))
             {
                 Destroy(priceObjective);

@@ -46,7 +46,7 @@ public class TImer : MonoBehaviour
             {
                 outcome.text = "You Win!";
             }
-            else
+            else if (timer < 0f)
             {
                 outcome.text = "You Lost!";
             }
