@@ -8,8 +8,6 @@ public class ShootPrice : MonoBehaviour
 	public float MouseSensitivity;
 	public Transform CamTransform;
 	private float camRotation = 0f;
-	public FMOD.Studio.EventInstance scan;
-	public string fmodEvent;
 	[SerializeField] TMP_Text aim;
 	private Color og;
 
@@ -17,7 +15,6 @@ public class ShootPrice : MonoBehaviour
 	{
 		//Locks cursor for mouse movement
 		Cursor.lockState = CursorLockMode.Locked;
-		scan = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
 	}
 
 	private void Update()
@@ -46,9 +43,10 @@ public class ShootPrice : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
+			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
+			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
 			if (hit.collider.gameObject.tag == "Objective")
 			{
-				scan.start();
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 			}
 		}
