@@ -46,10 +46,11 @@ public class ShootPrice : MonoBehaviour
 			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
 			if (hit.collider.gameObject.tag == "Objective" || hit.collider.gameObject.tag == "TutorialPriceObjectives")
-			{
-				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            {
+                hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 			}
-		}
+        }
 
 	}
 	private void Target()
