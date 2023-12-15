@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialMode : MonoBehaviour
 {
     public bool tutorialActive;
+    public ObjectiveText objectiveText;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class TutorialMode : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return))
         {
             tutorialActive = false;
+            objectiveText.progress = 0;
         }
     }
 }
