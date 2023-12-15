@@ -49,7 +49,8 @@ public class ShootPrice : MonoBehaviour
 			if (hit.collider.gameObject.tag == "Objective")
 			{
 				scan.start();
-				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+				hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 			}
 		}
 
