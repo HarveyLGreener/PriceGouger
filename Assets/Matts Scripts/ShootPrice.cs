@@ -35,7 +35,7 @@ public class ShootPrice : MonoBehaviour
 		else
         {
 			Target();
-		}		
+		}
 	}
 
 	private void SimpleRaycast()
@@ -45,7 +45,7 @@ public class ShootPrice : MonoBehaviour
 		{
 			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
-			if (hit.collider.gameObject.tag == "Objective")
+			if (hit.collider.gameObject.tag == "Objective" || hit.collider.gameObject.tag == "TutorialPriceObjectives")
 			{
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 			}
@@ -53,16 +53,20 @@ public class ShootPrice : MonoBehaviour
 
 	}
 	private void Target()
-    {
+	{
 		RaycastHit over;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out over))
-        {
-			if (over.collider.gameObject.tag == "Objective")
+		{
+			if (over.collider.gameObject.tag == "Objective" || over.collider.gameObject.tag == "TutorialPriceObjectives")
 			{
 				aim.color = new Color(0f, 255f, 0f, 255f);
 			}
+			else if (over.collider.gameObject.tag == "SuperSoakerText" || over.collider.gameObject.tag == "TutorialSuperSoaker")
+			{
+				aim.color = new Color(0f, 0f, 255f, 255f);
+			}
 			else
-            {
+			{
 				aim.color = new Color(0f, 0f, 0f, 255f);
 			}
 		}
