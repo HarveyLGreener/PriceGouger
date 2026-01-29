@@ -31,10 +31,12 @@ public class TImer : MonoBehaviour
             else if ((goal.progress >= goal.objectives) & (goal.superSoakerProgress >= goal.superSoakerObjectives) & (timer > 0f))
             {
                 changeScene.LoadScene("WinScreen");
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 changeScene.LoadScene("LoseScreen");
+                Cursor.lockState = CursorLockMode.None;
             }
         }
         else
