@@ -15,7 +15,7 @@ public class TutorialMode : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        /*if(Input.GetKeyDown(KeyCode.Return))
         {
             tutorialActive = false;
             objectiveText.progress = 0;
@@ -34,6 +34,6 @@ public class TutorialMode : MonoBehaviour
             {
                 Destroy(tutorialText);
             }
-        }
+        }*/
     }
 }

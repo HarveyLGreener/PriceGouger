@@ -8,10 +8,11 @@ public class ObjectiveProgress : MonoBehaviour
     private void Awake()
     {
         objectiveText.progress += 1;
-
+        Debug.Log("I am an active script!");
         if(objectiveText.tutorialPriceProgress < objectiveText.tutorialPriceObjectives)
         {
             objectiveText.tutorialPriceProgress++;
+            Debug.Log("Update tutorial");
         }
     }
 

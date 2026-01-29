@@ -9,6 +9,7 @@ public class ShootPrice : MonoBehaviour
 	public Transform CamTransform;
 	private float camRotation = 0f;
 	[SerializeField] TMP_Text aim;
+	[SerializeField] ObjectiveText objective;
 	private Color og;
 
 	private void Start()
@@ -48,6 +49,7 @@ public class ShootPrice : MonoBehaviour
 			if (hit.collider.gameObject.tag == "Objective" || hit.collider.gameObject.tag == "TutorialPriceObjectives")
 			{
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+				objective.UpdateProgress();
 			}
 		}
 
