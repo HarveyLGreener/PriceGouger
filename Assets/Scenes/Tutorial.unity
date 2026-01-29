@@ -765,6 +765,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7014236548719438143, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
+      propertyPath: m_TagString
+      value: Glitched
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
 --- !u!1001 &582245118
@@ -946,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 7014236548719438143, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014236548719438143, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
+      propertyPath: m_TagString
+      value: Glitched
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
@@ -1844,6 +1852,10 @@ PrefabInstance:
     - target: {fileID: 7014236548719438143, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014236548719438143, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}
+      propertyPath: m_TagString
+      value: Glitched
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0497a3b498182974c94f5fe6b63253a2, type: 3}

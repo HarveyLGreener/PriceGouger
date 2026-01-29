@@ -48,8 +48,18 @@ public class ShootPrice : MonoBehaviour
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
 			if (hit.collider.gameObject.tag == "Objective" || hit.collider.gameObject.tag == "TutorialPriceObjectives")
 			{
-				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-				hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+				if (hit.collider.gameObject.transform.GetChild(0).gameObject.tag == "Glitched")
+				{
+					hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+					hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+				}
+				else
+                {
+					hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+					hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+				}
+
+				hit.collider.gameObject.tag = "Untagged";
 				objective.UpdateProgress();
 			}
 		}

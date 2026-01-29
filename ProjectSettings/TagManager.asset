@@ -9,6 +9,7 @@ TagManager:
   - TutorialSuperSoaker
   - TutorialPriceObjectives
   - TutorialArea
+  - Glitched
   layers:
   - Default
   - TransparentFX
