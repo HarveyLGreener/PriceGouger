@@ -10,6 +10,7 @@ public class TImer : MonoBehaviour
     public ObjectiveText goal;
     [SerializeField] TextMeshProUGUI countdown;
     [SerializeField] TextMeshProUGUI outcome;
+    [SerializeField] SceneChange changeScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,11 @@ public class TImer : MonoBehaviour
             }
             else if ((goal.progress >= goal.objectives) & (goal.superSoakerProgress >= goal.superSoakerObjectives) & (timer > 0f))
             {
-                outcome.text = "You Win!";
+                changeScene.LoadScene("WinScreen");
             }
             else
             {
-                outcome.text = "You Lost!";
+                changeScene.LoadScene("LoseScreen");
             }
         }
         else
