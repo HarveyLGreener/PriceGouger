@@ -39,4 +39,9 @@ public class ObjectiveText : MonoBehaviour
             superSoakerProgressText.text = "Objects Soaked: " + superSoakerProgress + "/" + superSoakerObjectives + ".";
         }
     }
+
+    public void UpdateProgress()
+    {
+        progress++;
+    }
 }
