@@ -8,6 +8,7 @@ public class SuperSoaker : MonoBehaviour
 	public Transform CamTransform;
 	public TutorialMode tutorial;
 	[SerializeField] ObjectiveText superSoakerObjectiveText;
+	[SerializeField] private float superSoakerSpeed;
 
 	void Update()
     {
@@ -29,7 +30,7 @@ public class SuperSoaker : MonoBehaviour
 			if (hit.collider.gameObject.tag == "SuperSoakerText" || hit.collider.gameObject.tag == "TutorialSuperSoaker")
 			{
 				TextMeshPro superSoakerText = hit.collider.gameObject.GetComponent<TextMeshPro>();
-				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a - 0.002f);
+				superSoakerText.color = new Color(superSoakerText.color.r, superSoakerText.color.g, superSoakerText.color.b, superSoakerText.color.a - superSoakerSpeed);
 				if(superSoakerText.color.a <= 0.0f)
                 {
 					if(!tutorial.tutorialActive)
