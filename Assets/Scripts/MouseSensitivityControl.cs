@@ -18,12 +18,12 @@ public class MouseSensitivityControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            changeMouseSensitivity(5);
+            changeMouseSensitivity(10);
             Debug.Log("Increase mouse sensitivity");
         }
         else if (Input.GetKeyDown(KeyCode.Minus))
         {
-            changeMouseSensitivity(-5);
+            changeMouseSensitivity(-10);
             Debug.Log("Decrease mouse sensitivity");
         }
         else if(Input.GetKeyDown(KeyCode.M))

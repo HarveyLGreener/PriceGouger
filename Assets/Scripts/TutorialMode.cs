@@ -10,7 +10,7 @@ public class TutorialMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorialActive = true;
+        //tutorialActive = true;
     }
 
     void Update()
