@@ -11,10 +11,14 @@ public class TImer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdown;
     [SerializeField] TextMeshProUGUI outcome;
     [SerializeField] SceneChange changeScene;
+    private bool revisedTutorial;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (timer == 120)
+        {
+            revisedTutorial = true;
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +26,7 @@ public class TImer : MonoBehaviour
     {
         if (!tutorial.tutorialActive)
         {
-            if ((timer >= 0f) & (goal.progress < goal.objectives))
+            if ((timer >= 0f) & ((goal.progress < goal.objectives) || (goal.superSoakerProgress < goal.superSoakerObjectives)))
             {
                 timer -= Time.deltaTime;
                 int timeLeft = (int)Mathf.Round(timer);
@@ -30,8 +34,16 @@ public class TImer : MonoBehaviour
             }
             else if ((goal.progress >= goal.objectives) & (goal.superSoakerProgress >= goal.superSoakerObjectives) & (timer > 0f))
             {
-                changeScene.LoadScene("WinScreen");
-                Cursor.lockState = CursorLockMode.None;
+                if (revisedTutorial)
+                {
+                    revisedTutorial = false;
+                    changeScene.LoadScene("Final Level");
+                }
+                else
+                {
+                    changeScene.LoadScene("WinScreen");
+                    Cursor.lockState = CursorLockMode.None;
+                }
             }
             else
             {
