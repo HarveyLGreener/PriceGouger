@@ -49,6 +49,7 @@ public class ShootPrice : MonoBehaviour
 			if (hit.collider.gameObject.tag == "Objective" || hit.collider.gameObject.tag == "TutorialPriceObjectives")
 			{
 				hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+				hit.collider.gameObject.transform.GetChild(1).gameObject.SetActive(false);
 				objective.UpdateProgress();
 			}
 		}
